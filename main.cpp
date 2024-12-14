@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+#include "f.h"
 
 void OneLineRide(const std::vector<std::string>& Line, ptrdiff_t Start, ptrdiff_t End) {
 	while(Start < End) {
@@ -13,6 +10,7 @@ void OneLineRide(const std::vector<std::string>& Line, ptrdiff_t Start, ptrdiff_
 		std::cout << "Qaplar bağlanır. Növbəti stansiyası - " << Line[Start] << '\n';
 	}
 }
+
 int main(){
 	std::vector<std::string> GreenLine {
 		"Сырец",
@@ -32,8 +30,10 @@ int main(){
 		"Бориспольская",
 		"Красный Хутор"
 	};
+
 	//Я чувствую, насколько неоптимизированный весь этот код, поэтому пусть меня спасёт тот факт,
 	//что между станциями не может быть 255 минут времени. Иначе это уже не метро.
+
 	std::vector<char> GreenLineTime{
 		3, //Сырец - Дорогожичи
 		2, //Дорогожичи - Лукьяновская
@@ -57,5 +57,16 @@ int main(){
 	auto StartPos = std::find(GreenLine.begin(), GreenLine.end(), Start)-GreenLine.begin();
 	auto EndPos = std::find(GreenLine.begin(), GreenLine.end(), End)-GreenLine.begin();
 	OneLineRide(GreenLine, StartPos, EndPos);
+
+
+
+	// Макс, твой код я не трогал, свой ебанул и проверил, все работает
+
+	std::string FirstStation="Шулявская", SecondStation="Оболонь";
+	std::pair<std::string, int> Coord1, Coord2;
+	find_stations(FirstStation, SecondStation, Coord1, Coord2);
+	std::cout<<"Номер 1ой станции: "<<Coord1.second<<"\nЦвет линии первой станции: "<<Coord1.first<<"\n";
+	std::cout<<"Номер 2ой станции: "<<Coord2.second<<"\nЦвет линии второй станции: "<<Coord2.first<<"\n"; 
+
 	return 0;
 }
