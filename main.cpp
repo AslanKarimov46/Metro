@@ -3,6 +3,16 @@
 #include <string>
 #include <algorithm>
 
+void OneLineRide(const std::vector<std::string>& Line, ptrdiff_t Start, ptrdiff_t End) {
+	while(Start < End) {
+		Start++;
+		std::cout << "Qaplar bağlanır. Növbəti stansiyası - " << Line[Start] << '\n';
+	}
+	while(Start > End) {
+		Start--;
+		std::cout << "Qaplar bağlanır. Növbəti stansiyası - " << Line[Start] << '\n';
+	}
+}
 int main(){
 	std::vector<std::string> GreenLine {
 		"Сырец",
@@ -25,15 +35,8 @@ int main(){
 	std::string Start, End;
 	std::getline(std::cin, Start);
 	std::getline(std::cin, End);
-	auto StartPos = std::find(GreenLine.begin(), GreenLine.end(), Start);
-	auto EndPos = std::find(GreenLine.begin(), GreenLine.end(), End);
-	while(StartPos < EndPos) {
-		StartPos++;
-		std::cout << "Qaplar bağlanır. Növbəti stansiyası - " << GreenLine[StartPos-GreenLine.begin()] << '\n';
-	}
-	while(StartPos > EndPos) {
-		StartPos--;
-		std::cout << "Qaplar bağlanır. Növbəti stansiyası - " << GreenLine[StartPos-GreenLine.begin()] << '\n';
-	}
+	auto StartPos = std::find(GreenLine.begin(), GreenLine.end(), Start)-GreenLine.begin();
+	auto EndPos = std::find(GreenLine.begin(), GreenLine.end(), End)-GreenLine.begin();
+	OneLineRide(GreenLine, StartPos, EndPos);
 	return 0;
 }
