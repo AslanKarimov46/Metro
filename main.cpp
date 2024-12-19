@@ -12,7 +12,7 @@ void OneLineRide(const std::vector<std::string>& Line, ptrdiff_t Start, ptrdiff_
 }
 
 int main(){
-	std::vector<std::string> GreenLine {
+	/*std::vector<std::string> GreenLine {
 		"Сырец",
 		"Дорогожичи",
 		"Лукьяновская",
@@ -56,17 +56,14 @@ int main(){
 	std::getline(std::cin, End);
 	auto StartPos = std::find(GreenLine.begin(), GreenLine.end(), Start)-GreenLine.begin();
 	auto EndPos = std::find(GreenLine.begin(), GreenLine.end(), End)-GreenLine.begin();
-	OneLineRide(GreenLine, StartPos, EndPos);
+	OneLineRide(GreenLine, StartPos, EndPos);*/
 
-
-
-	// Макс, твой код я не трогал, свой ебанул и проверил, все работает
-
-	std::string FirstStation="Шулявская", SecondStation="Оболонь";
+	std::string FirstStation="Дарница", SecondStation="Олимпийская";
 	std::pair<std::string, int> Coord1, Coord2;
 	find_stations(FirstStation, SecondStation, Coord1, Coord2);
 	std::cout<<"Номер 1ой станции: "<<Coord1.second<<"\nЦвет линии первой станции: "<<Coord1.first<<"\n";
 	std::cout<<"Номер 2ой станции: "<<Coord2.second<<"\nЦвет линии второй станции: "<<Coord2.first<<"\n"; 
+	std::cout<<route(FirstStation, SecondStation)<<"\n";
 
 	return 0;
 }
