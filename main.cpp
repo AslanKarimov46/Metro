@@ -58,11 +58,11 @@ int main(){
 	auto EndPos = std::find(GreenLine.begin(), GreenLine.end(), End)-GreenLine.begin();
 	OneLineRide(GreenLine, StartPos, EndPos);*/
 
-	std::string FirstStation="Дарница", SecondStation="Олимпийская";
-	std::pair<std::string, int> Coord1, Coord2;
-	find_stations(FirstStation, SecondStation, Coord1, Coord2);
-	std::cout<<"Номер 1ой станции: "<<Coord1.second<<"\nЦвет линии первой станции: "<<Coord1.first<<"\n";
-	std::cout<<"Номер 2ой станции: "<<Coord2.second<<"\nЦвет линии второй станции: "<<Coord2.first<<"\n"; 
+	std::string FirstStation="Святошин", SecondStation="Арсенальная";
+	//std::pair<std::string, int> Coord1, Coord2;
+	//find_stations(FirstStation, SecondStation, Coord1, Coord2);
+	//std::cout<<"Номер 1ой станции: "<<Coord1.second<<"\nЦвет линии первой станции: "<<Coord1.first<<"\n";
+	//std::cout<<"Номер 2ой станции: "<<Coord2.second<<"\nЦвет линии второй станции: "<<Coord2.first<<"\n"; 
 	std::cout<<route(FirstStation, SecondStation)<<"\n";
 
 	return 0;

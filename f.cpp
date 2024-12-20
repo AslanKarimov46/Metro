@@ -10,8 +10,8 @@ std::vector<std::string> stations_red{
     "Политехнический институт",
     "Вокзальная",
     "Университет",
-    "Театральная",
-    "Крещатик",
+    "Театральная",										// Переход на зеленую линию
+    "Крещатик",											// Переход на синюю линию 
     "Арсенальная",
     "Днепр",
     "Гидропарк",
@@ -30,9 +30,8 @@ std::vector<std::string> stations_blue{
     "Тараса Шевченко",
     "Контрактовая площадь",
     "Почтовая площадь",
-    "Площадь Независимости",
-    "Крещатик",
-    "Площадь Льва Толстого",
+    "Площадь Независимости",							// Переход на красную линюю
+    "Площадь Льва Толстого",							// Переход на зеленую линюю
     "Олимпийская",
     "Дворец Украина",
     "Лыбедская",
@@ -49,8 +48,8 @@ std::vector<std::string> stations_green{
     "Сырец",
     "Дорогожичи",
     "Лукьяновская",
-    "Золотые ворота",
-    "Дворец спорта",
+    "Золотые ворота",									// Переход на красную линию
+    "Дворец спорта",									// Переход на синюю линюю
     "Кловская",
     "Печерская",
     "Дружбы Народов",
@@ -59,11 +58,13 @@ std::vector<std::string> stations_green{
     "Осокорки",
     "Позняки",
     "Харьковская",
+    "Вырлица",
     "Бориспольская",
     "Красный хутор"};
 
 std::vector<int> GreenLineTime{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
+int Red_to_Green=1, Red_to_Blue=5, Green_to_Blue=3;
 
 void find_stations(std::string first, std::string second, std::pair<std::string, int>& index1, std::pair<std::string, int>& index2){
 		
@@ -96,7 +97,7 @@ void find_stations(std::string first, std::string second, std::pair<std::string,
 			}
 			if(stations_blue[i]==second){
 				index2.second=i;
-				index2.first="stations_blue";
+				index2.first="stations_blue"; 
 			}	
 		}
 }
@@ -108,97 +109,134 @@ int route(std::string& FirstStation, std::string& SecondStation){
 
     // Рассмотрим случаи когда мы путешествуем, только по 1ой ветке
     if(Coord1.first==Coord2.first){
-        if(Coord1.second<=Coord2.second){
-            for(int i=Coord1.second; i!=Coord2.second; i++){
-                if(Coord1.first=="stations_red"){
-                    std::cout<<res_time<<"\n"; 
+
+        if(Coord1.first=="stations_red"){
+            if( (Coord1.second<=9 && Coord2.second<=9) || (Coord1.second>=10 && Coord2.second>=10) ){
+                for(int i=Coord1.second; i!=Coord2.second; i++){  
                     res_time+=RedLineTime[i];
-                    std::cout<<"RedLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
+                    std::cout<<"RedLineTime["<<i<<"]"<<RedLineTime[i]<<"\n";    
                 }
-                if(Coord1.first=="stations_green"){
-                    res_time+=GreenLineTime[i];
-                    std::cout<<"GreenLineTime["<<i<<"] = "<<GreenLineTime[i]<<"\n";
-                }
-                if(Coord1.first=="stations_blue"){
-                    res_time+=BlueLineTime[i];
-                    std::cout<<"BlueLineTime["<<i<<"] = "<<BlueLineTime[i]<<"\n";
-                }
+                std::cout<<"\n";
+            }else{
+                if(Coord1.second<=9){
+                    int a=GreenLineTime[3]+BlueLineTime[7]+Red_to_Green+Green_to_Blue+Red_to_Blue;
+                    std::cout<<"a="<<a<<"\n";
+                    std::cout<<"RedLineTime[9]="<<RedLineTime[9]<<"\n";
+                    if(a>RedLineTime[9])
+                        a=RedLineTime[9];
+                    std::cout<<"a="<<a<<"\n";
+                    res_time+=route(FirstStation, stations_red[9]);
+                    std::cout<<"res_time="<<res_time<<"\n";
+                    res_time+=a;
+                    std::cout<<"res_time="<<res_time<<"\n";
+                    res_time+=route(stations_red[10], SecondStation);
+                    std::cout<<"res_time="<<res_time<<"\n";
+                }else{ 
+                    res_time=route(SecondStation, FirstStation);
+                    std::cout<<"res_time="<<res_time<<"\n";
+                } 
             }
-        }else{
-            for(int i=Coord1.second-1; i!=Coord2.second-1; i--){
-                if(Coord1.first=="stations_red"){
-                    res_time+=RedLineTime[i];
-                    std::cout<<"RedLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
-                }
-                if(Coord1.first=="stations_green"){
-                    res_time+=GreenLineTime[i];
-                    std::cout<<"GreenLineTime["<<i<<"] = "<<GreenLineTime[i]<<"\n";
-                }
-                if(Coord1.first=="stations_blue"){
-                    res_time+=BlueLineTime[i];
-                    std::cout<<"BlueLineTime["<<i<<"] = "<<BlueLineTime[i]<<"\n";
+        }
+
+        if(Coord1.first=="stations_green"){
+            if( (Coord1.second<=3 && Coord2.second<=3) || (Coord1.second>=4 && Coord2.second>=4) ){
+                for(int i=Coord1.second; i!=Coord2.second; i++) 
+                    res_time+=GreenLineTime[i];   
+            }else{
+                if(Coord1.second<=3){
+                    int a=RedLineTime[9]+BlueLineTime[7]+Red_to_Green+Green_to_Blue+Red_to_Blue;
+                    std::cout<<"a="<<a<<"\n";
+                    std::cout<<"GreenLineTime[3]="<<GreenLineTime[3]<<"\n";
+                    if(a>GreenLineTime[3])
+                        a=GreenLineTime[3];
+                    std::cout<<"a="<<a<<"\n";
+                    res_time+=route(FirstStation, stations_green[3]);
+                    std::cout<<"res_time="<<res_time<<"\n";
+                    res_time+=a;
+                    std::cout<<"res_time="<<res_time<<"\n";
+                    res_time+=route(stations_green[4], SecondStation);
+                    std::cout<<"res_time="<<res_time<<"\n";
+                
+                }else{
+                    res_time=route(SecondStation, FirstStation);
+                    std::cout<<"res_time="<<res_time<<"\n";
                 }
             }
         }
-    }else{  
+
+        if(Coord1.first=="stations_blue"){
+            if( (Coord1.second<=7 && Coord2.second<=7) || (Coord1.second>=8 && Coord2.second>=8) ){
+                for(int i=Coord1.second; i!=Coord2.second; i++) 
+                    res_time+=BlueLineTime[i];   
+            }else{
+                if(Coord1.second<=7){
+                    int a=RedLineTime[9]+GreenLineTime[3]+Red_to_Green+Green_to_Blue+Red_to_Blue;
+                    std::cout<<"a="<<a<<"\n";
+                    std::cout<<"BlueLineTime[7]="<<BlueLineTime[7]<<"\n";
+                    if(a>BlueLineTime[7])
+                        a=GreenLineTime[3];
+                    std::cout<<"a="<<a<<"\n";
+                    res_time+=route(FirstStation, stations_blue[7]);
+                    std::cout<<"res_time="<<res_time<<"\n";
+                    res_time+=a;
+                    std::cout<<"res_time="<<res_time<<"\n";
+                    res_time+=route(stations_blue[8], SecondStation);
+                    std::cout<<"res_time="<<res_time<<"\n";
+                }
+                else{
+                res_time=route(SecondStation, FirstStation);
+                std::cout<<"res_time="<<res_time<<"\n";
+                }
+            }
+        }
+
+    }
+    else{  
     
         // Начинаем с красной
         
-        if(Coord1.first=="stations_red"){
-            // Идем на зеленую  
-        
+        if(Coord1.first=="stations_red"){ 
+
             if(Coord2.first=="stations_green"){
-                // Идем на театральную
-        
-                if(Coord1.second<=9){ 
-                    for(size_t i=Coord1.second-2; i!=9; i++){
-                        res_time+=RedLineTime[i];
-                        std::cout<<"RedLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
+
+                if(Coord1.second<=9){
+                    if(Coord2.second<=3){
+                        res_time+=route(FirstStation, stations_red[9]);
+                        res_time+=route(SecondStation, stations_green[3]);
+                    }else{
+                        res_time+=route(FirstStation, stations_red[9]);
+                        res_time+=route(stations_green[3]), stations_green[4];
+                        res_time+=route(stations_green[4], SecondStation);
                     }
                 }else{
-                    for(size_t i=Coord1.second-1; i!=8; i--){
-                        res_time+=RedLineTime[i];
-                        std::cout<<"RedLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
+                    if(Coord2.second<=3){
+                        res_time+=route(FirstStation, stations_red[9]);
+                        res_time+=route(stations_green[3], SecondStation);
+                    }else{
+                        res_time+=route(FirstStation, stations_red[10]);
+                        res_time+=route(stations_blue[7], stations_blue[8]);
+                        res_time+=route(stations_green[4], SecondStation);
                     }
                 }
-
-                // Переход с театральной на Золотые ворота потом куда надо
-                if(Coord2.second<=3){
-                    for(size_t i=Coord2.second; i!=3; i++){
-                        res_time+=GreenLineTime[i];
-                        std::cout<<"GreenLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
-                    }
-                }else{
-                    for(size_t i=Coord2.second-1; i!=2; i--){
-                        res_time+=GreenLineTime[i];
-                        std::cout<<"GreenLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
-                    }
-                }
-
         
             }else{
-                // та же ситуация расписывать лень
-                if(Coord1.second<=9){ 
-                    for(size_t i=Coord1.second-2; i!=10; i++){
-                        res_time+=RedLineTime[i];
-                        std::cout<<"RedLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
-                    }
-                }else{
-                    for(size_t i=Coord1.second-1; i!=9; i--){
-                        res_time+=RedLineTime[i];
-                        std::cout<<"RedLineTime["<<i<<"] = "<<RedLineTime[i]<<"\n";
-                    }
-                }
 
-                if(Coord2.second<=7){
-                    for(size_t i=Coord2.second; i!=7; i++){
-                        res_time+=BlueLineTime[i];
-                        std::cout<<"BlueLineTime["<<i<<"] = "<<BlueLineTime[i]<<"\n";
+                if(Coord1.second<=10){
+                    if(Coord2.second<=7){
+                        res_time+=route(FirstStation, stations_red[10]);
+                        res_time+=route(stations_blue[7], SecondStation);
+                    }else{
+                        res_time+=route(FirstStation, stations_red[9]);
+                        res_time+=route(stations_green[3], stations_green[4]);
+                        res_time+=route(SecondStation, stations_blue[8]);
                     }
                 }else{
-                    for(size_t i=Coord2.second-2; i!=6; i--){
-                        res_time+=BlueLineTime[i];
-                        std::cout<<"BlueLineTime["<<i<<"] = "<<BlueLineTime[i]<<"\n";
+                    if(Coord2.second<=7){
+                        res_time+=route(FirstStation, stations_red[10]);
+                        res_time+=route(SecondStation, stations_blue[7]);
+                    }else{
+                        res+=route(FirstStation, stations_blue[10]);
+                        res+=route(SecondStation, stations_blue[10]);
                     }
                 }
             }
