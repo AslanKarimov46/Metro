@@ -12,7 +12,7 @@ void OneLineRide(const std::vector<std::string>& Line, ptrdiff_t Start, ptrdiff_
 }
 
 int main(){
-	/*std::vector<std::string> GreenLine {
+	std::vector<std::string> GreenLine {
 		"Сырец",
 		"Дорогожичи",
 		"Лукьяновская",
@@ -33,8 +33,7 @@ int main(){
 
 	//Я чувствую, насколько неоптимизированный весь этот код, поэтому пусть меня спасёт тот факт,
 	//что между станциями не может быть 255 минут времени. Иначе это уже не метро.
-
-	std::vector<char> GreenLineTime{
+	/*std::vector<char> GreenLineTime{
 		3, //Сырец - Дорогожичи
 		2, //Дорогожичи - Лукьяновская
 		4, //Лукьяновская - Золотые ворота
@@ -64,6 +63,9 @@ int main(){
 	//std::cout<<"Номер 1ой станции: "<<Coord1.second<<"\nЦвет линии первой станции: "<<Coord1.first<<"\n";
 	//std::cout<<"Номер 2ой станции: "<<Coord2.second<<"\nЦвет линии второй станции: "<<Coord2.first<<"\n"; 
 	std::cout<<route(FirstStation, SecondStation)<<"\n";
+	
+	auto StartPos = std::find(GreenLine.begin(), GreenLine.end(), "Сырец")-GreenLine.begin();
+	auto EndPos = std::find(GreenLine.begin(), GreenLine.end(), End)-GreenLine.begin();
 
 	return 0;
 }
