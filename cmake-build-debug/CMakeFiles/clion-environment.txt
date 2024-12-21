@@ -1,4 +1,0 @@
-ToolSet: 1.0 (local)Ninja: 1.12.1@/var/home/shishik4life/Приложения/Toolbox/Apps/clion/bin/ninja/linux/x64/ninja
-Options: 
-
-Options:-DCMAKE_CXX_COMPILER=g++

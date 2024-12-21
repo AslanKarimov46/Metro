@@ -1,4 +1,0 @@
-/home/shishik4life/Коды/Metro/cmake-build-debug/CMakeFiles/Metro.dir
-/home/shishik4life/Коды/Metro/cmake-build-debug/CMakeFiles/InitTesting.dir
-/home/shishik4life/Коды/Metro/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/shishik4life/Коды/Metro/cmake-build-debug/CMakeFiles/rebuild_cache.dir

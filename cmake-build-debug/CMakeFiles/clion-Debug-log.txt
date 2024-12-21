@@ -1,4 +1,0 @@
-/var/home/shishik4life/Приложения/Toolbox/Apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=g++ -G "Unix Makefiles" -S /home/shishik4life/Коды/Metro -B /home/shishik4life/Коды/Metro/cmake-build-debug
--- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /home/shishik4life/Коды/Metro/cmake-build-debug
