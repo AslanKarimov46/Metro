@@ -1,4 +1,4 @@
-ToolSet: 1.0 (local)Ninja: 1.12.0@/home/stud-16/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja
+ToolSet: 1.0 (local)Ninja: 1.12.1@/var/home/shishik4life/Приложения/Toolbox/Apps/clion/bin/ninja/linux/x64/ninja
 Options: 
 
-Options:-DCMAKE_MAKE_PROGRAM=/home/stud-16/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja
+Options:-DCMAKE_CXX_COMPILER=g++

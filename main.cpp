@@ -1,6 +1,6 @@
 #include "f.h"
 
-int main(){
+int main() {
     std::string startStation, destinationStation;
 	std::getline(std::cin, startStation);
 	std::getline(std::cin, destinationStation);

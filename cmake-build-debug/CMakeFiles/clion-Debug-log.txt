@@ -1,4 +1,4 @@
-/home/stud-16/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/stud-16/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/stud-16/Bloxin/Metro -B /home/stud-16/Bloxin/Metro/cmake-build-debug
+/var/home/shishik4life/Приложения/Toolbox/Apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=g++ -G "Unix Makefiles" -S /home/shishik4life/Коды/Metro -B /home/shishik4life/Коды/Metro/cmake-build-debug
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/stud-16/Bloxin/Metro/cmake-build-debug
+-- Build files have been written to: /home/shishik4life/Коды/Metro/cmake-build-debug
