@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
 project(Metro)
 set(CMAKE_CXX_STANDARD 20)
-add_executable(Metro main.cpp)
+add_executable(Metro main.cpp f.cpp)
+add_executable(InitTesting tests.cpp f.cpp)
