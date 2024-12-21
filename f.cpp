@@ -224,7 +224,7 @@ int route(std::string& FirstStation, std::string& SecondStation){
                         res_time+=route(SecondStation, stations_green[3]);
                     }else{
                         res_time+=route(FirstStation, stations_red[9]);
-                        res_time+=route(stations_green[3]), stations_green[4];
+                        res_time+=route(stations_green[3], stations_green[4]);
                         res_time+=route(stations_green[4], SecondStation);
                     }
                 }else{
@@ -254,8 +254,8 @@ int route(std::string& FirstStation, std::string& SecondStation){
                         res_time+=route(FirstStation, stations_red[10]);
                         res_time+=route(SecondStation, stations_blue[7]);
                     }else{
-                        res+=route(FirstStation, stations_blue[10]);
-                        res+=route(SecondStation, stations_blue[10]);
+                        res_time+=route(FirstStation, stations_blue[10]);
+                        res_time+=route(SecondStation, stations_blue[10]);
                     }
                 }
             }
