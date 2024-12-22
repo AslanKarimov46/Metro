@@ -345,7 +345,7 @@ TEST_SUITE("Red-Red") {
         CHECK_EQ(route("Житомирская", "Университет"), timeMetro);
     }   //StartRed - StartRed
     TEST_CASE("Университет - Житомирская") {
-        int timeMetro = RedLineTimeTest[1] + RedLineTimeTest[2] + RedLineTimeTest[3] + RedLineTimeTest[4] + RedLineTimeTest[5] + RedLineTimeTest[6] + RedLineTimeTest[7];
+        int timeMetro = RedLineTimeTest[7] + RedLineTimeTest[6] + RedLineTimeTest[5] + RedLineTimeTest[4] + RedLineTimeTest[3] + RedLineTimeTest[2] + RedLineTimeTest[1];
         CHECK_EQ(route("Университет", "Житомирская"), timeMetro);
     }   //StartRed - StartRed
 
@@ -362,17 +362,16 @@ TEST_SUITE("Red-Red") {
         CHECK_EQ(route("Шулявская", "Днепр"), timeMetro);
     }   //StartRed - EndRed
     TEST_CASE("Днепр - Шулявская") {
-        int timeMetro = RedLineTimeTest[5]+RedLineTimeTest[6]+RedLineTimeTest[7]+RedLineTimeTest[8]+RedLineTimeTest[10]+RedLineTimeTest[11];
-        if(Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest < RedLineTimeTest[9])
+        int timeMetro = RedLineTimeTest[11]+RedLineTimeTest[10]+RedLineTimeTest[8]+RedLineTimeTest[7]+RedLineTimeTest[6]+RedLineTimeTest[5];
+        if(Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest < RedLineTimeTest[9])
         {
-            timeMetro += Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest;
+            timeMetro += Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest;
         }
         else
         {
             timeMetro += RedLineTimeTest[9];
         }
         CHECK_EQ(route("Днепр", "Шулявская"), timeMetro);
-
     }   //EndRed - StartRed
 
     TEST_CASE("Дарница - Арсенальная") {
@@ -380,7 +379,7 @@ TEST_SUITE("Red-Red") {
         CHECK_EQ(route("Дарница", "Арсенальная"), timeMetro);
     }   //EndRed - EndRed
     TEST_CASE("Арсенальная - Дарница") {
-        int timeMetro = RedLineTimeTest[14]+RedLineTimeTest[13]+RedLineTimeTest[12]+RedLineTimeTest[11];
+        int timeMetro = RedLineTimeTest[11]+RedLineTimeTest[12]+RedLineTimeTest[13]+RedLineTimeTest[14];
         CHECK_EQ(route("Арсенальная", "Дарница"), timeMetro);
     }   //EndRed - EndRed
 
@@ -389,7 +388,7 @@ TEST_SUITE("Red-Red") {
         CHECK_EQ(route("Вокзальная", "Театральная"), timeMetro);
     }   //StartRed - LeftRedChange
     TEST_CASE("Театральная - Вокзальная") {
-        int timeMetro = RedLineTimeTest[7]+RedLineTimeTest[8];
+        int timeMetro = RedLineTimeTest[8]+RedLineTimeTest[7];
         CHECK_EQ(route("Театральная", "Вокзальная"), timeMetro);
     }   //LeftRedChange - StartRed
 
@@ -407,7 +406,7 @@ TEST_SUITE("Red-Red") {
     }   //StartRed - RightRedChange
     TEST_CASE("Крещатик - Политехнический институт") {
         int timeMetro = RedLineTimeTest[6]+RedLineTimeTest[7]+RedLineTimeTest[8];
-        if(Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest < RedLineTimeTest[9])
+        if(Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest < RedLineTimeTest[9])
         {
             timeMetro += Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest;
         }
@@ -423,15 +422,15 @@ TEST_SUITE("Red-Red") {
         CHECK_EQ(route("Левобережная", "Крещатик"), timeMetro);
     }   //EndRed - RightRedChange
     TEST_CASE("Крещатик - Левобережная") {
-        int timeMetro = RedLineTimeTest[13]+RedLineTimeTest[12]+RedLineTimeTest[11]+RedLineTimeTest[10];
+        int timeMetro = RedLineTimeTest[10]+RedLineTimeTest[11]+RedLineTimeTest[12]+RedLineTimeTest[13];
         CHECK_EQ(route("Крещатик", "Левобережная"), timeMetro);
     }   //RightRedChange - EndRed
 
     TEST_CASE("Гидропарк - Театральная") {
         int timeMetro = RedLineTimeTest[12]+RedLineTimeTest[11]+RedLineTimeTest[10];
-        if(Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest < RedLineTimeTest[9])
+        if(Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest < RedLineTimeTest[9])
         {
-            timeMetro += Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest;
+            timeMetro += Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest;
         }
         else
         {
@@ -440,7 +439,7 @@ TEST_SUITE("Red-Red") {
         CHECK_EQ(route("Гидропарк", "Театральная"), timeMetro);
     }   //EndRed - LeftRedChange
     TEST_CASE("Театральная - Гидропарк") {
-        int timeMetro = RedLineTimeTest[12]+RedLineTimeTest[11]+RedLineTimeTest[10];
+        int timeMetro = RedLineTimeTest[10]+RedLineTimeTest[11]+RedLineTimeTest[12];
         if(Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest < RedLineTimeTest[9])
         {
             timeMetro += Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest;
@@ -459,15 +458,15 @@ TEST_SUITE("Blue-Blue") {
         CHECK_EQ(route("Героев Днепра", "Тараса Шевченко"), timeMetro);
     }   //StartBlue - StartBlue
     TEST_CASE("Тараса Шевченко - Героев Днепра ") {
-        int timeMetro = BlueLineTimeTest[0]+BlueLineTimeTest[1]+BlueLineTimeTest[2]+BlueLineTimeTest[3];
+        int timeMetro = BlueLineTimeTest[3]+BlueLineTimeTest[2]+BlueLineTimeTest[1]+BlueLineTimeTest[0];
         CHECK_EQ(route("Тараса Шевченко", "Героев Днепра"), timeMetro);
     }   //StartBlue - StartBlue
 
     TEST_CASE("Петровка - Лыбедская") {
         int timeMetro = BlueLineTimeTest[3]+BlueLineTimeTest[4]+BlueLineTimeTest[5]+BlueLineTimeTest[6]+BlueLineTimeTest[8]+BlueLineTimeTest[9]+BlueLineTimeTest[10];
-        if(Red_to_GreenTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < BlueLineTimeTest[7])
+        if(Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < BlueLineTimeTest[7])
         {
-            timeMetro += Red_to_GreenTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest;
+            timeMetro += Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest;
         }
         else
         {
@@ -476,10 +475,10 @@ TEST_SUITE("Blue-Blue") {
         CHECK_EQ(route("Петровка", "Лыбедская"), timeMetro);
     }   //StartBlue - EndBlue
     TEST_CASE("Лыбедская - Петровка") {
-        int timeMetro = BlueLineTimeTest[3]+BlueLineTimeTest[4]+BlueLineTimeTest[5]+BlueLineTimeTest[6]+BlueLineTimeTest[8]+BlueLineTimeTest[9]+BlueLineTimeTest[10];
-        if(Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < BlueLineTimeTest[7])
+        int timeMetro = BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8]+BlueLineTimeTest[6]+BlueLineTimeTest[5]+BlueLineTimeTest[4]+BlueLineTimeTest[3];
+        if(Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest < BlueLineTimeTest[7])
         {
-            timeMetro += Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest;
+            timeMetro += Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest;
         }
         else
         {
@@ -493,7 +492,7 @@ TEST_SUITE("Blue-Blue") {
         CHECK_EQ(route("Дворец Украина", "Голосеевская"), timeMetro);
     }   //EndBlue - EndBlue
     TEST_CASE("Голосеевская - Дворец Украина") {
-        int timeMetro = BlueLineTimeTest[10]+BlueLineTimeTest[11]+BlueLineTimeTest[12];
+        int timeMetro = BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10];
         CHECK_EQ(route("Голосеевская", "Дворец Украина"), 0);
     }   //EndBlue - EndBlue
 
@@ -502,7 +501,7 @@ TEST_SUITE("Blue-Blue") {
         CHECK_EQ(route("Минская", "Площадь Независимости"), 0);
     }   //StartBlue - UpBlueChange
     TEST_CASE("Площадь Независимости - Минская") {
-        int timeMetro = BlueLineTimeTest[1]+BlueLineTimeTest[2]+BlueLineTimeTest[3]+BlueLineTimeTest[4]+BlueLineTimeTest[5]+BlueLineTimeTest[6];
+        int timeMetro = BlueLineTimeTest[6]+BlueLineTimeTest[5]+BlueLineTimeTest[4]+BlueLineTimeTest[3]+BlueLineTimeTest[2]+BlueLineTimeTest[1];
         CHECK_EQ(route("Площадь Независимости", "Минская"), 0);
     }   //UpBlueChange - StartBlue
 
@@ -520,9 +519,9 @@ TEST_SUITE("Blue-Blue") {
     }   //StartBlue - DownBlueChange
     TEST_CASE("Площадь Льва Толстого - Оболонь") {
         int timeMetro = BlueLineTimeTest[2]+BlueLineTimeTest[3]+BlueLineTimeTest[4]+BlueLineTimeTest[5]+BlueLineTimeTest[6];
-        if(Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < BlueLineTimeTest[7])
+        if(Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest < BlueLineTimeTest[7])
         {
-            timeMetro += Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest;
+            timeMetro += Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest;
         }
         else
         {
@@ -533,9 +532,9 @@ TEST_SUITE("Blue-Blue") {
 
     TEST_CASE("Ипподром - Площадь Независимости") {
         int timeMetro = BlueLineTimeTest[15]+BlueLineTimeTest[14]+BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8];
-        if(Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < BlueLineTimeTest[7])
+        if(Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest < BlueLineTimeTest[7])
         {
-            timeMetro += Red_to_GreenTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest;
+            timeMetro += Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest;
         }
         else
         {
@@ -544,7 +543,7 @@ TEST_SUITE("Blue-Blue") {
         CHECK_EQ(route("Ипподром", "Площадь Независимости"), timeMetro);
     }   //EndBlue - UpBlueChange
     TEST_CASE("Площадь Независимости - Ипподром") {
-        int timeMetro = BlueLineTimeTest[15]+BlueLineTimeTest[14]+BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8];
+        int timeMetro = BlueLineTimeTest[8]+BlueLineTimeTest[9]+BlueLineTimeTest[10]+BlueLineTimeTest[11]+BlueLineTimeTest[12]+BlueLineTimeTest[13]+BlueLineTimeTest[14]+BlueLineTimeTest[15];
         if(Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < BlueLineTimeTest[7])
         {
             timeMetro += Red_to_GreenTest + RedLineTimeTest[9] + Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest;
@@ -553,16 +552,16 @@ TEST_SUITE("Blue-Blue") {
         {
             timeMetro += BlueLineTimeTest[7];
         }
-        CHECK_EQ(route("Площадь Независимости", "Ипподром"), 0);
+        CHECK_EQ(route("Площадь Независимости", "Ипподром"), timeMetro);
     }   //UpBlueChange - EndBlue
 
     TEST_CASE("Васильковская - Площадь Льва Толстого") {
-        int timeMetro = BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8]+BlueLineTimeTest[7];
-        CHECK_EQ(route("Васильковская", "Площадь Льва Толстого"), 0);
+        int timeMetro = BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8];
+        CHECK_EQ(route("Васильковская", "Площадь Льва Толстого"), timeMetro);
     }   //EndBlue - DownBlueChange
     TEST_CASE("Площадь Льва Толстого - Васильковская") {
-        int timeMetro = BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8]+BlueLineTimeTest[7];
-        CHECK_EQ(route("Площадь Льва Толстого", "Васильковская"), 0);
+        int timeMetro = BlueLineTimeTest[8]+BlueLineTimeTest[9]+BlueLineTimeTest[10]+BlueLineTimeTest[11]+BlueLineTimeTest[12]+BlueLineTimeTest[13];
+        CHECK_EQ(route("Площадь Льва Толстого", "Васильковская"), timeMetro);
     }   //DownBlueChange - EndBlue
 }
 
@@ -572,7 +571,7 @@ TEST_SUITE("Green-Green") {
         CHECK_EQ(route("Сырец", "Лукьяновская"), timeMetro);
     }   //StartGreen - StartGreen
     TEST_CASE("Лукьяновская - Сырец") {
-        int timeMetro = GreenLineTimeTest[0]+GreenLineTimeTest[1];
+        int timeMetro = GreenLineTimeTest[1]+GreenLineTimeTest[0];
         CHECK_EQ(route("Лукьяновская", "Сырец"), timeMetro);
     }   //StartGreen - StartGreen
 
@@ -589,10 +588,10 @@ TEST_SUITE("Green-Green") {
         CHECK_EQ(route("Дорогожичи", "Позняки"), timeMetro);
     }   //Startgreen - Endgreen
     TEST_CASE("Позняки - Дорогожичи") {
-        int timeMetro = GreenLineTimeTest[1]+GreenLineTimeTest[2]+GreenLineTimeTest[4]+GreenLineTimeTest[5]+GreenLineTimeTest[6]+GreenLineTimeTest[7]+GreenLineTimeTest[8]+GreenLineTimeTest[9]+GreenLineTimeTest[10];
-        if(Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest < GreenLineTimeTest[3])
+        int timeMetro = GreenLineTimeTest[10]+GreenLineTimeTest[9]+GreenLineTimeTest[8]+GreenLineTimeTest[7]+GreenLineTimeTest[6]+GreenLineTimeTest[5]+GreenLineTimeTest[4]+GreenLineTimeTest[2]+GreenLineTimeTest[1];
+        if(Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest < GreenLineTimeTest[3])
         {
-            timeMetro += Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest;
+            timeMetro += Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest;
         }
         else
         {
@@ -603,38 +602,79 @@ TEST_SUITE("Green-Green") {
     }   //Endgreen - Startgreen
 
     TEST_CASE("Красный хутор - Славутич") {
-        CHECK_EQ(route("Красный хутор", "Славутич"), 0);
-        
+        int timeMetro = GreenLineTimeTest[14]+GreenLineTimeTest[13]+GreenLineTimeTest[12]+GreenLineTimeTest[11]+GreenLineTimeTest[10]+GreenLineTimeTest[9];
+        CHECK_EQ(route("Красный хутор", "Славутич"), timeMetro);
     }   //Endgreen - Endgreen
     TEST_CASE("Славутич - Красный хутор") {
-        CHECK_EQ(route("Славутич", "Красный хутор"), 0);
+        int timeMetro = GreenLineTimeTest[9]+GreenLineTimeTest[10]+GreenLineTimeTest[11]+GreenLineTimeTest[12]+GreenLineTimeTest[13]+GreenLineTimeTest[14];
+        CHECK_EQ(route("Славутич", "Красный хутор"), timeMetro);
     }   //Endgreen - Endgreen
 
     TEST_CASE("Сырец - Дворец спорта") {
-        CHECK_EQ(route("Сырец", "Дворец спорта"), 0);
+        int timeMetro = GreenLineTimeTest[0]+GreenLineTimeTest[1]+GreenLineTimeTest[2];
+        if(Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest < GreenLineTimeTest[3])
+        {
+            timeMetro += Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest;
+        }
+        else
+        {
+            timeMetro += GreenLineTimeTest[3];
+        }
+        CHECK_EQ(route("Сырец", "Дворец спорта"), timeMetro);
     }   //StartGreen - RightGreenChange
     TEST_CASE("Дворец спорта - Сырец") {
-        CHECK_EQ(route("Дворец спорта", "Сырец"), 0);
+        int timeMetro = GreenLineTimeTest[2]+GreenLineTimeTest[1]+GreenLineTimeTest[0];
+        if(Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest < GreenLineTimeTest[3])
+        {
+            timeMetro += Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest;
+        }
+        else
+        {
+            timeMetro += GreenLineTimeTest[3];
+        }
+        CHECK_EQ(route("Дворец спорта", "Сырец"), timeMetro);
     }   //RightGreenChange - StartGreen
 
     TEST_CASE("Дорогожичи - Золотые ворота") {
-        CHECK_EQ(route("Дорогожичи", "Золотые ворота"), 0);
+        int timeMetro = GreenLineTimeTest[1]+GreenLineTimeTest[2];
+        CHECK_EQ(route("Дорогожичи", "Золотые ворота"), timeMetro);
     }   //StartGreen - LeftGreenChange
     TEST_CASE("Золотые ворота - Дорогожичи") {
-        CHECK_EQ(route("Золотые ворота", "Дорогожичи"), 0);
+        int timeMetro = GreenLineTimeTest[2]+GreenLineTimeTest[1];
+        CHECK_EQ(route("Золотые ворота", "Дорогожичи"), timeMetro);
     }   //LeftGreenChange - StartGreen
 
     TEST_CASE("Вырлица - Дворец спорта") {
-        CHECK_EQ(route("Вырлица", "Дворец спорта"), 0);
+        int timeMetro = GreenLineTimeTest[12]+GreenLineTimeTest[11]+GreenLineTimeTest[10]+GreenLineTimeTest[9]+GreenLineTimeTest[8]+GreenLineTimeTest[7]+GreenLineTimeTest[6]+GreenLineTimeTest[5]+GreenLineTimeTest[4];
+        CHECK_EQ(route("Вырлица", "Дворец спорта"), timeMetro);
     }   //EndGreen - RightGreenChange
     TEST_CASE("Дворец спорта - Вырлица") {
-        CHECK_EQ(route("Дворец спорта", "Вырлица"), 0);
+        int timeMetro = GreenLineTimeTest[4]+GreenLineTimeTest[5]+GreenLineTimeTest[6]+GreenLineTimeTest[7]+GreenLineTimeTest[8]+GreenLineTimeTest[9]+GreenLineTimeTest[10]+GreenLineTimeTest[11]+GreenLineTimeTest[12];
+        CHECK_EQ(route("Дворец спорта", "Вырлица"), timeMetro);
     }   //RightGreenChange - EndGreen
 
     TEST_CASE("Выдубичи - Золотые ворота") {
-        CHECK_EQ(route("Выдубичи", "Золотые ворота"), 0);
+        int timeMetro = GreenLineTimeTest[7]+GreenLineTimeTest[6]+GreenLineTimeTest[5]+GreenLineTimeTest[4];
+        if(Green_to_BlueTest + BlueLineTimeTest[7]+ Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest < GreenLineTimeTest[3])
+        {
+            timeMetro += Green_to_BlueTest + BlueLineTimeTest[7]+ Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest;
+        }
+        else
+        {
+            timeMetro += GreenLineTimeTest[3];
+        }
+        CHECK_EQ(route("Выдубичи", "Золотые ворота"), timeMetro);
     }   //EndGreen - LeftGreenChange
     TEST_CASE("Золотые ворота - Выдубичи") {
-        CHECK_EQ(route("Золотые ворота", "Выдубичи"), 0);
+        int timeMetro = GreenLineTimeTest[4]+GreenLineTimeTest[5]+GreenLineTimeTest[6]+GreenLineTimeTest[7];
+        if(Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7]+ Blue_to_GreenTest < GreenLineTimeTest[3])
+        {
+            timeMetro += Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7]+ Blue_to_GreenTest;
+        }
+        else
+        {
+            timeMetro += GreenLineTimeTest[3];
+        }
+        CHECK_EQ(route("Золотые ворота", "Выдубичи"), timeMetro);
     }   //LeftGreenChange - EndGreen
 }
