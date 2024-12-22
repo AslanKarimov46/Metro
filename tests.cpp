@@ -714,6 +714,7 @@ TEST_SUITE("One-Two")
         {
             timeMetro += RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest;
         }
+        CHECK_EQ(route("Нивки", "Бориспольская"), timeMetro);
     }
     TEST_CASE("Дорогожичи (GREEN) - Лесная (RED)"){
         int timeMetro = GreenLineTimeTest[1] + GreenLineTimeTest[2] + RedLineTimeTest[10] + RedLineTimeTest[11] + RedLineTimeTest[12] + RedLineTimeTest[13] + RedLineTimeTest[14] + RedLineTimeTest[15] + RedLineTimeTest[16];
@@ -725,6 +726,7 @@ TEST_SUITE("One-Two")
         {
             timeMetro += GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest;
         }
+        CHECK_EQ(route("Дорогожичи", "Лесная"), timeMetro);
     }
     TEST_CASE("Теремки (BLUE) - Сырец (GREEN)"){
         int timeMetro = BlueLineTimeTest[16]+BlueLineTimeTest[15]+BlueLineTimeTest[14]+BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8]+GreenLineTimeTest[2]+GreenLineTimeTest[1]+GreenLineTimeTest[0];
@@ -736,6 +738,7 @@ TEST_SUITE("One-Two")
         {
             timeMetro += BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest;
         }
+        CHECK_EQ(route("Теремки", "Сырец"), timeMetro);
     }
     TEST_CASE("Красный Хутор (GREEN) - Героев Днепра (BLUE)") {
         int timeMetro = GreenLineTimeTest[14]+GreenLineTimeTest[13]+GreenLineTimeTest[12]+GreenLineTimeTest[11]+GreenLineTimeTest[10]+GreenLineTimeTest[9]+GreenLineTimeTest[8]+GreenLineTimeTest[7]+GreenLineTimeTest[6]+GreenLineTimeTest[5]+GreenLineTimeTest[4]+BlueLineTimeTest[6]+BlueLineTimeTest[5]+BlueLineTimeTest[4]+BlueLineTimeTest[3]+BlueLineTimeTest[2]+BlueLineTimeTest[1]+BlueLineTimeTest[0];
@@ -747,5 +750,6 @@ TEST_SUITE("One-Two")
         {
             timeMetro += GreenLineTimeTest[3]+Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest;
         }
+        CHECK_EQ(route("Красный хутор", "Героев Днепра"), timeMetro);
     }
 }
