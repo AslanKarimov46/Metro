@@ -66,7 +66,7 @@ std::vector<int> GreenLineTime{1, 2, 3, 4789, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 
 int Red_to_Green=1, Red_to_Blue=5, Green_to_Blue=3, Green_to_Red=5, Blue_to_Red=9, Blue_to_Green=2;
 
-void find_stations(std::string first, std::string second, std::pair<std::string, int>& index1, std::pair<std::string, int>& index2){
+void find_stations(const std::string& first, const std::string& second, std::pair<std::string, int>& index1, std::pair<std::string, int>& index2){
 		
         for(size_t i=0; i!=stations_red.size(); i++){
 			if(stations_red[i]==first){
@@ -102,7 +102,7 @@ void find_stations(std::string first, std::string second, std::pair<std::string,
 		}
 }
 
-int route(std::string& FirstStation, std::string& SecondStation){
+int route(const std::string& FirstStation, const std::string& SecondStation){
     int res_time=0;
     std::pair<std::string, int> Coord1, Coord2;
     find_stations(FirstStation, SecondStation, Coord1, Coord2);

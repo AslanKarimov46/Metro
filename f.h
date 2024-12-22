@@ -4,5 +4,5 @@
 #include <string>
 #include <algorithm>
 
-void find_stations(std::string first, std::string second, std::pair<std::string, int>& index1, std::pair<std::string, int>& index2);
-int route(std::string& FirstStation, std::string& SecondStation);
+void find_stations(const std::string& first, const std::string& second, std::pair<std::string, int>& index1, std::pair<std::string, int>& index2);
+int route(const std::string& FirstStation, const std::string& SecondStation);
