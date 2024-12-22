@@ -62,7 +62,7 @@ std::vector<std::string> stations_green{
     "Бориспольская",
     "Красный хутор"};
 
-std::vector<int> GreenLineTime{1, 2, 3, 4789, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+std::vector<int> GreenLineTime{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
 int Red_to_Green=1, Red_to_Blue=5, Green_to_Blue=3, Green_to_Red=5, Blue_to_Red=9, Blue_to_Green=2;
 
@@ -260,7 +260,7 @@ int route(const std::string& FirstStation, const std::string& SecondStation){
     
         // Начинаем с красной
         
-        if(Coord1.first=="stations_red"){ 
+        if(Coord1.first=="stations_red") { 
 
             if(Coord2.first=="stations_green"){
 
@@ -377,6 +377,127 @@ int route(const std::string& FirstStation, const std::string& SecondStation){
             }
         }
 
+        if(Coord1.first=="stations_green"){
+
+            if(Coord2.first=="stations_red"){
+                if(Coord1.second<=3){
+                    if(Coord2.second<=9){
+                        res_time+=route(FirstStation, stations_green[3]);
+                        std::cout<<"Перейдите на красную линию на станцию ТЕАТРАЛЬНАЯ\n";
+                        res_time+=Green_to_Red;
+                        res_time+=route(stations_red[9], SecondStation);
+                    }else{
+                        res_time+=route(FirstStation, stations_green[3]);
+                        int a=GreenLineTime[3]+Green_to_Blue+BlueLineTime[7]+Blue_to_Red;
+                        if(a>=(Green_to_Red+RedLineTime[9])){
+                            a=Green_to_Red+RedLineTime[9];
+                            std::cout<<"Перейдите на красную линию на станцию ТЕАТРАЛЬНАЯ\n";
+                            std::cout<<"The next station is: "<<stations_red[10]<<" Arrival time is: "<<RedLineTime[9]<<"\n";
+                        }else{
+                            std::cout<<"The next station is: "<<stations_green[4]<<" Arrival time is: "<<GreenLineTime[3]<<"\n";
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
+                            std::cout<<"The next station is: "<<stations_blue[7]<<" Arrival time is: "<<BlueLineTime[7]<<"\n";
+                            std::cout<<"Перейдите на красную линию на станцию КРЕЩАТИК\n";
+                        }
+                        res_time+=a;
+                        res_time+=route(stations_red[10], SecondStation);
+                    }
+                }else{
+                    if(Coord2.second<=9){
+                        res_time+=route(FirstStation, stations_green[4]);
+                        int a=Green_to_Blue+BlueLineTime[7]+Blue_to_Red+RedLineTime[9];
+                        if(a>=(GreenLineTime[3]+Green_to_Red)){
+                            a=GreenLineTime[3]+Green_to_Red;
+                            std::cout<<"The next station is: "<<stations_green[3]<<" Arrival time is: "<<GreenLineTime[3]<<"\n";
+                            std::cout<<"Перейдите на красную линию на станцию ТЕАТРАЛЬНАЯ\n";
+                        }else{
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
+                            std::cout<<"The next station is: "<<stations_blue[7]<<" Arrival time is: "<<BlueLineTime[7]<<"\n";
+                            std::cout<<"Перейдите на красную линию на станцию КРЕЩАТИК\n";
+                            std::cout<<"The next station is: "<<stations_red[9]<<" Arrival time is: "<<RedLineTime[9]<<"\n";
+                        }
+                        res_time+=a;
+                        res_time+=route(stations_red[9], SecondStation);
+                    }else{
+                        res_time+=route(FirstStation, stations_green[4]);
+                        int a=GreenLineTime[3]+Green_to_Red+RedLineTime[9];
+                        if(a>=(Green_to_Blue+BlueLineTime[7])){
+                            a=Green_to_Blue+BlueLineTime[7];
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
+                            std::cout<<"The next station is: "<<stations_blue[7]<<" Arrival time is: "<<BlueLineTime[7]<<"\n";
+                            std::cout<<"Перейдите на красную линию на станцию КРЕЩАТИК\n";
+                        }else{
+                            std::cout<<"The next station: "<<stations_green[3]<<" Arrival time is: "<<GreenLineTime[3]<<"\n";
+                            std::cout<<"Перейдите на красную линию на станцию ТЕАТРАЛЬНАЯ\n";
+                            std::cout<<"The next station is: "<<stations_red[10]<<" Arrival time is: "<<RedLineTime[9]<<"\n";
+                        }
+                        res_time+=route(stations_red[10], SecondStation);
+                    }
+                }
+            // С Зеленой на Синюю
+            }else{
+                if(Coord1.second<=3){
+                    if(Coord2.second<=7){
+                        res_time+=route(FirstStation, stations_green[3]);
+                        int a=GreenLineTime[3]+Green_to_Blue+BlueLineTime[7]+Blue_to_Red;
+                        if(a>=(Green_to_Red+RedLineTime[9])){
+                            a=Green_to_Red+RedLineTime[9];
+                            std::cout<<"Перейдите на красную линию на станцию ТЕАТРАЛЬНАЯ\n";
+                            std::cout<<"The next station is: "<<stations_red[10]<<" Arrival time is: "<<RedLineTime[9]<<"\n";
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ НЕЗАВИСИМОСТИ\n";
+                        }else{
+                            std::cout<<"The next station is: "<<stations_green[4]<<" Arrival time is: "<<GreenLineTime[3]<<"\n";
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
+                            std::cout<<"The next station is: "<<stations_blue[7]<<" Arrival time is: "<<BlueLineTime[7]<<"\n";
+                            std::cout<<"Перейдите на красную линию на станцию КРЕЩАТИК\n";
+                        }
+                        res_time+=a;
+                        res_time+=route(stations_blue[7], SecondStation);
+                    }else{
+                        res_time+=route(FirstStation, stations_green[3]);
+                        int a=Green_to_Red+RedLineTime[9]+Red_to_Blue+BlueLineTime[7];
+                        if(a>=(GreenLineTime[3]+Green_to_Blue)){
+                            a=GreenLineTime[3]+Green_to_Blue;
+                            std::cout<<"The next station is: "<<stations_green[4]<<" Arrival time is: "<<GreenLineTime[3]<<"\n";
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
+                        }else{
+                            std::cout<<"Перейдите на красную линию на станцию ТЕАТРАЛЬНАЯ\n";
+                            std::cout<<"The next station is: "<<stations_red[10]<<" Arrival time is: "<<RedLineTime[9]<<"\n";
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ НЕЗАВИСИМОСТИ\n";
+                            std::cout<<"The next station is: "<<stations_blue[8]<<" Arrival time is: "<<BlueLineTime[7]<<"\n";
+                            std::cout<<"Перейдите на зеленую линию на станцию ДВОРЕЦ СПОРТА\n";
+                        }
+                        res_time+=a;
+                        res_time+=route(stations_blue[8], SecondStation);
+                    }
+                }else{
+                    if(Coord2.second<=7){
+                        res_time+=route(FirstStation, stations_green[4]);
+                        int a=GreenLineTime[3]+Green_to_Red+RedLineTime[9]+Red_to_Blue;
+                        if(a>=(Green_to_Blue+BlueLineTime[7])){
+                            a=Green_to_Blue+BlueLineTime[7];
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
+                            std::cout<<"The next station is: "<<stations_blue[7]<<" Arrival time is: "<<BlueLineTime[7]<<"\n";
+                        }else{
+                            std::cout<<"The next station is: "<<stations_green[3]<<" Arrival time is: "<<GreenLineTime[3]<<"\n";
+                            std::cout<<"Перейдите на красную линию на станцию ТЕАТРАЛЬНАЯ\n";
+                            std::cout<<"The next station is: "<<stations_red[10]<<" Arrival time is: "<<RedLineTime[9]<<"\n";
+                            std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ НЕЗАВИСИМОСТИ\n";
+                        }
+                        res_time+=a;
+                        res_time+=route(stations_blue[7], SecondStation);
+                    }else{
+                        res_time+=route(FirstStation, stations_green[4]);
+                        std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
+                        res_time+=Green_to_Blue;
+                        res_time+=route(stations_blue[8], SecondStation);
+                    }
+                }
+
+            }
+
+
+        }
 
     }
 
