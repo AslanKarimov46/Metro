@@ -2,16 +2,15 @@
 #include "doctest.h"
 #include "f.h"
 
-
 std::pair<std::string, int> start;
 std::pair<std::string, int> destination;
 
-std::vector<int> RedLineTimeTest{1, 2, 3, 4, 5, 6, 7, 8, 9, 108, 11, 12, 13, 14, 15, 16, 17};
+std::vector<int> RedLineTimeTest{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
 int Red_to_GreenTest=1, Red_to_BlueTest=5, Green_to_BlueTest=3, Green_to_RedTest=5, Blue_to_RedTest=9, Blue_to_GreenTest=2;
 std::vector<int> BlueLineTimeTest{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
-std::vector<int> GreenLineTimeTest{1, 2, 3, 478, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-
+std::vector<int> GreenLineTimeTest{1, 2, 3, 4789, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 //лучше варика я не придумал
+
 TEST_SUITE_BEGIN("Finding test");
 TEST_SUITE("Red-Red") {
     TEST_CASE("Житомирская - Университет") {
@@ -493,16 +492,16 @@ TEST_SUITE("Blue-Blue") {
     }   //EndBlue - EndBlue
     TEST_CASE("Голосеевская - Дворец Украина") {
         int timeMetro = BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10];
-        CHECK_EQ(route("Голосеевская", "Дворец Украина"), 0);
+        CHECK_EQ(route("Голосеевская", "Дворец Украина"), timeMetro);
     }   //EndBlue - EndBlue
 
     TEST_CASE("Минская - Площадь Независимости") {
         int timeMetro = BlueLineTimeTest[1]+BlueLineTimeTest[2]+BlueLineTimeTest[3]+BlueLineTimeTest[4]+BlueLineTimeTest[5]+BlueLineTimeTest[6];
-        CHECK_EQ(route("Минская", "Площадь Независимости"), 0);
+        CHECK_EQ(route("Минская", "Площадь Независимости"), timeMetro);
     }   //StartBlue - UpBlueChange
     TEST_CASE("Площадь Независимости - Минская") {
         int timeMetro = BlueLineTimeTest[6]+BlueLineTimeTest[5]+BlueLineTimeTest[4]+BlueLineTimeTest[3]+BlueLineTimeTest[2]+BlueLineTimeTest[1];
-        CHECK_EQ(route("Площадь Независимости", "Минская"), 0);
+        CHECK_EQ(route("Площадь Независимости", "Минская"), timeMetro);
     }   //UpBlueChange - StartBlue
 
     TEST_CASE("Оболонь - Площадь Льва Толстого") {
@@ -677,4 +676,76 @@ TEST_SUITE("Green-Green") {
         }
         CHECK_EQ(route("Золотые ворота", "Выдубичи"), timeMetro);
     }   //LeftGreenChange - EndGreen
+}
+
+TEST_SUITE("One-Two")
+{
+    TEST_CASE("Берестейская (RED) -  Выставочный центр (BLUE)"){
+        int timeMetro = RedLineTimeTest[4]+RedLineTimeTest[5]+RedLineTimeTest[6]+RedLineTimeTest[7]+RedLineTimeTest[8]+BlueLineTimeTest[8]+BlueLineTimeTest[9]+BlueLineTimeTest[10]+BlueLineTimeTest[11]+BlueLineTimeTest[12]+BlueLineTimeTest[13]+BlueLineTimeTest[14];
+        if(Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7])
+        {
+            timeMetro += Red_to_GreenTest + GreenLineTimeTest[3]+ Green_to_BlueTest;
+        }
+        else
+        {
+            timeMetro += RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7];
+        }
+        CHECK_EQ(route("Берестейская", "Выставочный центр"), timeMetro);
+    }
+    TEST_CASE("Контрактовая площадь (BLUE) - Дарница (RED)"){
+        int timeMetro = BlueLineTimeTest[5]+BlueLineTimeTest[6] + RedLineTimeTest[10]+RedLineTimeTest[11]+RedLineTimeTest[12]+RedLineTimeTest[13]+RedLineTimeTest[14];
+        if(Blue_to_RedTest < BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9])
+        {
+            timeMetro += Blue_to_RedTest;
+        }
+        else
+        {
+            timeMetro += BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9];
+        }
+        CHECK_EQ(route("Контрактовая площадь", "Дарница"), timeMetro);
+    }
+    TEST_CASE("Нивки (RED) - Бориспольская (GREEN)"){
+        int timeMetro = RedLineTimeTest[3]+RedLineTimeTest[4]+RedLineTimeTest[5]+RedLineTimeTest[6]+RedLineTimeTest[7]+RedLineTimeTest[8]+GreenLineTimeTest[4]+GreenLineTimeTest[5]+GreenLineTimeTest[6]+GreenLineTimeTest[7]+GreenLineTimeTest[8]+GreenLineTimeTest[9]+GreenLineTimeTest[10]+GreenLineTimeTest[11]+GreenLineTimeTest[12]+GreenLineTimeTest[13];
+        if(Red_to_GreenTest + GreenLineTimeTest[3] < RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest)
+        {
+            timeMetro += Red_to_GreenTest + GreenLineTimeTest[3];
+        }
+        else
+        {
+            timeMetro += RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest;
+        }
+    }
+    TEST_CASE("Дорогожичи (GREEN) - Лесная (RED)"){
+        int timeMetro = GreenLineTimeTest[1] + GreenLineTimeTest[2] + RedLineTimeTest[10] + RedLineTimeTest[11] + RedLineTimeTest[12] + RedLineTimeTest[13] + RedLineTimeTest[14] + RedLineTimeTest[15] + RedLineTimeTest[16];
+        if(Green_to_RedTest + RedLineTimeTest[9] < GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest)
+        {
+            timeMetro += Green_to_RedTest + RedLineTimeTest[9];
+        }
+        else
+        {
+            timeMetro += GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest;
+        }
+    }
+    TEST_CASE("Теремки (BLUE) - Сырец (GREEN)"){
+        int timeMetro = BlueLineTimeTest[16]+BlueLineTimeTest[15]+BlueLineTimeTest[14]+BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8]+GreenLineTimeTest[2]+GreenLineTimeTest[1]+GreenLineTimeTest[0];
+        if(Blue_to_GreenTest + GreenLineTimeTest[3] < BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest)
+        {
+            timeMetro += Blue_to_GreenTest + GreenLineTimeTest[3];
+        }
+        else
+        {
+            timeMetro += BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest;
+        }
+    }
+    TEST_CASE("Красный Хутор (GREEN) - Героев Днепра (BLUE)") {
+        int timeMetro = GreenLineTimeTest[14]+GreenLineTimeTest[13]+GreenLineTimeTest[12]+GreenLineTimeTest[11]+GreenLineTimeTest[10]+GreenLineTimeTest[9]+GreenLineTimeTest[8]+GreenLineTimeTest[7]+GreenLineTimeTest[6]+GreenLineTimeTest[5]+GreenLineTimeTest[4]+BlueLineTimeTest[6]+BlueLineTimeTest[5]+BlueLineTimeTest[4]+BlueLineTimeTest[3]+BlueLineTimeTest[2]+BlueLineTimeTest[1]+BlueLineTimeTest[0];
+        if(Green_to_BlueTest+ BlueLineTimeTest[7] < GreenLineTimeTest[3]+Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest)
+        {
+            timeMetro += Green_to_BlueTest+ BlueLineTimeTest[7];
+        }
+        else
+        {
+            timeMetro += GreenLineTimeTest[3]+Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest;
+        }
+    }
 }
