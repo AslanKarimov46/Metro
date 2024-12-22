@@ -1,7 +1,7 @@
 #include "f.h"
 
 int main() {
-    std::string startStation="Печерская", destinationStation="Дорогожичи";
+    std::string startStation="Героев Днепра", destinationStation="Тараса Шевченко";
 	/*std::getline(std::cin, startStation);
 	std::getline(std::cin, destinationStation);
 	std::pair<std::string, int> Coord1, Coord2;
