@@ -8,7 +8,7 @@ std::pair<std::string, int> destination;
 std::vector<int> RedLineTimeTest{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
 int Red_to_GreenTest=1, Red_to_BlueTest=5, Green_to_BlueTest=3, Green_to_RedTest=5, Blue_to_RedTest=9, Blue_to_GreenTest=2;
 std::vector<int> BlueLineTimeTest{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
-std::vector<int> GreenLineTimeTest{1, 2, 3, 4789, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+std::vector<int> GreenLineTimeTest{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 //лучше варика я не придумал
 
 TEST_SUITE_BEGIN("Finding test");
