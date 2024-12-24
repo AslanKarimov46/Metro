@@ -579,14 +579,15 @@ TEST_SUITE_END();
 
 TEST_SUITE("One-Two")
 {
-    TEST_CASE("Берестейская (RED) -  Выставочный центр (BLUE)"){
-        int timeMetro = RedLineTimeTest[4]+RedLineTimeTest[5]+RedLineTimeTest[6]+RedLineTimeTest[7]+RedLineTimeTest[8]+BlueLineTimeTest[8]+BlueLineTimeTest[9]+BlueLineTimeTest[10]+BlueLineTimeTest[11]+BlueLineTimeTest[12]+BlueLineTimeTest[13]+BlueLineTimeTest[14];
-        if(Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest < RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7])
-        {
-            timeMetro += Red_to_GreenTest + GreenLineTimeTest[3]+ Green_to_BlueTest;
-        }
-        else
-        {
+    TEST_CASE("Берестейская (RED) -  Выставочный центр (BLUE)") {
+        int timeMetro =
+                RedLineTimeTest[4] + RedLineTimeTest[5] + RedLineTimeTest[6] + RedLineTimeTest[7] + RedLineTimeTest[8] +
+                BlueLineTimeTest[8] + BlueLineTimeTest[9] + BlueLineTimeTest[10] + BlueLineTimeTest[11] +
+                BlueLineTimeTest[12] + BlueLineTimeTest[13] + BlueLineTimeTest[14];
+        if (Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest <
+            RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7]) {
+            timeMetro += Red_to_GreenTest + GreenLineTimeTest[3] + Green_to_BlueTest;
+        } else {
             timeMetro += RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7];
         }
         find_stations("Берестейская", "Выставочный центр", start, destination);
@@ -596,15 +597,16 @@ TEST_SUITE("One-Two")
         CHECK_EQ(15, destination.second);
         CHECK_EQ(route(start, destination), timeMetro);
     }
-    TEST_CASE("Контрактовая площадь (BLUE) - Дарница (RED)"){
-        int timeMetro = BlueLineTimeTest[5]+BlueLineTimeTest[6] + RedLineTimeTest[10]+RedLineTimeTest[11]+RedLineTimeTest[12]+RedLineTimeTest[13]+RedLineTimeTest[14];
-        if(Blue_to_RedTest < BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9])
-        {
+
+    TEST_CASE("Контрактовая площадь (BLUE) - Дарница (RED)") {
+        int timeMetro = BlueLineTimeTest[5] + BlueLineTimeTest[6] + RedLineTimeTest[10] + RedLineTimeTest[11] +
+                        RedLineTimeTest[12] + RedLineTimeTest[13] + RedLineTimeTest[14];
+        if (Blue_to_RedTest <
+            BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9]) {
             timeMetro += Blue_to_RedTest;
-        }
-        else
-        {
-            timeMetro += BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9];
+        } else {
+            timeMetro += BlueLineTimeTest[7] + Blue_to_GreenTest + GreenLineTimeTest[3] + Green_to_RedTest +
+                         RedLineTimeTest[9];
         }
         find_stations("Контрактовая площадь", "Дарница", start, destination);
         CHECK_EQ("stations_blue", start.first);
@@ -613,14 +615,17 @@ TEST_SUITE("One-Two")
         CHECK_EQ(15, destination.second);
         CHECK_EQ(route(start, destination), timeMetro);
     }
-    TEST_CASE("Нивки (RED) - Бориспольская (GREEN)"){
-        int timeMetro = RedLineTimeTest[3]+RedLineTimeTest[4]+RedLineTimeTest[5]+RedLineTimeTest[6]+RedLineTimeTest[7]+RedLineTimeTest[8]+GreenLineTimeTest[4]+GreenLineTimeTest[5]+GreenLineTimeTest[6]+GreenLineTimeTest[7]+GreenLineTimeTest[8]+GreenLineTimeTest[9]+GreenLineTimeTest[10]+GreenLineTimeTest[11]+GreenLineTimeTest[12]+GreenLineTimeTest[13];
-        if(Red_to_GreenTest + GreenLineTimeTest[3] < RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest)
-        {
+
+    TEST_CASE("Нивки (RED) - Бориспольская (GREEN)") {
+        int timeMetro =
+                RedLineTimeTest[3] + RedLineTimeTest[4] + RedLineTimeTest[5] + RedLineTimeTest[6] + RedLineTimeTest[7] +
+                RedLineTimeTest[8] + GreenLineTimeTest[4] + GreenLineTimeTest[5] + GreenLineTimeTest[6] +
+                GreenLineTimeTest[7] + GreenLineTimeTest[8] + GreenLineTimeTest[9] + GreenLineTimeTest[10] +
+                GreenLineTimeTest[11] + GreenLineTimeTest[12] + GreenLineTimeTest[13];
+        if (Red_to_GreenTest + GreenLineTimeTest[3] <
+            RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest) {
             timeMetro += Red_to_GreenTest + GreenLineTimeTest[3];
-        }
-        else
-        {
+        } else {
             timeMetro += RedLineTimeTest[9] + Red_to_BlueTest + BlueLineTimeTest[7] + Blue_to_GreenTest;
         }
         find_stations("Нивки", "Бориспольская", start, destination);
@@ -630,14 +635,15 @@ TEST_SUITE("One-Two")
         CHECK_EQ(14, destination.second);
         CHECK_EQ(route(start, destination), timeMetro);
     }
-    TEST_CASE("Дорогожичи (GREEN) - Лесная (RED)"){
-        int timeMetro = GreenLineTimeTest[1] + GreenLineTimeTest[2] + RedLineTimeTest[10] + RedLineTimeTest[11] + RedLineTimeTest[12] + RedLineTimeTest[13] + RedLineTimeTest[14] + RedLineTimeTest[15] + RedLineTimeTest[16];
-        if(Green_to_RedTest + RedLineTimeTest[9] < GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest)
-        {
+
+    TEST_CASE("Дорогожичи (GREEN) - Лесная (RED)") {
+        int timeMetro = GreenLineTimeTest[1] + GreenLineTimeTest[2] + RedLineTimeTest[10] + RedLineTimeTest[11] +
+                        RedLineTimeTest[12] + RedLineTimeTest[13] + RedLineTimeTest[14] + RedLineTimeTest[15] +
+                        RedLineTimeTest[16];
+        if (Green_to_RedTest + RedLineTimeTest[9] <
+            GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest) {
             timeMetro += Green_to_RedTest + RedLineTimeTest[9];
-        }
-        else
-        {
+        } else {
             timeMetro += GreenLineTimeTest[3] + Green_to_BlueTest + BlueLineTimeTest[7] + Blue_to_RedTest;
         }
         find_stations("Дорогожичи", "Лесная", start, destination);
@@ -647,14 +653,15 @@ TEST_SUITE("One-Two")
         CHECK_EQ(17, destination.second);
         CHECK_EQ(route(start, destination), timeMetro);
     }
-    TEST_CASE("Теремки (BLUE) - Сырец (GREEN)"){
-        int timeMetro = BlueLineTimeTest[16]+BlueLineTimeTest[15]+BlueLineTimeTest[14]+BlueLineTimeTest[13]+BlueLineTimeTest[12]+BlueLineTimeTest[11]+BlueLineTimeTest[10]+BlueLineTimeTest[9]+BlueLineTimeTest[8]+GreenLineTimeTest[2]+GreenLineTimeTest[1]+GreenLineTimeTest[0];
-        if(Blue_to_GreenTest + GreenLineTimeTest[3] < BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest)
-        {
+
+    TEST_CASE("Теремки (BLUE) - Сырец (GREEN)") {
+        int timeMetro = BlueLineTimeTest[16] + BlueLineTimeTest[15] + BlueLineTimeTest[14] + BlueLineTimeTest[13] +
+                        BlueLineTimeTest[12] + BlueLineTimeTest[11] + BlueLineTimeTest[10] + BlueLineTimeTest[9] +
+                        BlueLineTimeTest[8] + GreenLineTimeTest[2] + GreenLineTimeTest[1] + GreenLineTimeTest[0];
+        if (Blue_to_GreenTest + GreenLineTimeTest[3] <
+            BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest) {
             timeMetro += Blue_to_GreenTest + GreenLineTimeTest[3];
-        }
-        else
-        {
+        } else {
             timeMetro += BlueLineTimeTest[7] + Blue_to_RedTest + RedLineTimeTest[9] + Red_to_GreenTest;
         }
         find_stations("Теремки", "Сырец", start, destination);
@@ -664,15 +671,18 @@ TEST_SUITE("One-Two")
         CHECK_EQ(0, destination.second);
         CHECK_EQ(route(start, destination), timeMetro);
     }
+
     TEST_CASE("Красный Хутор (GREEN) - Героев Днепра (BLUE)") {
-        int timeMetro = GreenLineTimeTest[14]+GreenLineTimeTest[13]+GreenLineTimeTest[12]+GreenLineTimeTest[11]+GreenLineTimeTest[10]+GreenLineTimeTest[9]+GreenLineTimeTest[8]+GreenLineTimeTest[7]+GreenLineTimeTest[6]+GreenLineTimeTest[5]+GreenLineTimeTest[4]+BlueLineTimeTest[6]+BlueLineTimeTest[5]+BlueLineTimeTest[4]+BlueLineTimeTest[3]+BlueLineTimeTest[2]+BlueLineTimeTest[1]+BlueLineTimeTest[0];
-        if(Green_to_BlueTest+ BlueLineTimeTest[7] < GreenLineTimeTest[3]+Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest)
-        {
-            timeMetro += Green_to_BlueTest+ BlueLineTimeTest[7];
-        }
-        else
-        {
-            timeMetro += GreenLineTimeTest[3]+Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest;
+        int timeMetro = GreenLineTimeTest[14] + GreenLineTimeTest[13] + GreenLineTimeTest[12] + GreenLineTimeTest[11] +
+                        GreenLineTimeTest[10] + GreenLineTimeTest[9] + GreenLineTimeTest[8] + GreenLineTimeTest[7] +
+                        GreenLineTimeTest[6] + GreenLineTimeTest[5] + GreenLineTimeTest[4] + BlueLineTimeTest[6] +
+                        BlueLineTimeTest[5] + BlueLineTimeTest[4] + BlueLineTimeTest[3] + BlueLineTimeTest[2] +
+                        BlueLineTimeTest[1] + BlueLineTimeTest[0];
+        if (Green_to_BlueTest + BlueLineTimeTest[7] <
+            GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest) {
+            timeMetro += Green_to_BlueTest + BlueLineTimeTest[7];
+        } else {
+            timeMetro += GreenLineTimeTest[3] + Green_to_RedTest + RedLineTimeTest[9] + Red_to_BlueTest;
         }
         find_stations("Красный хутор", "Героев Днепра", start, destination);
         CHECK_EQ("stations_green", start.first);
@@ -681,4 +691,22 @@ TEST_SUITE("One-Two")
         CHECK_EQ(0, destination.second);
         CHECK_EQ(route(start, destination), timeMetro);
     }
+    TEST_CASE("Красный Хутор (GREEN) - Красный Хутор (GREEN)")
+    {
+        find_stations("Красный хутор", "Красный хутор", start, destination);
+        CHECK_EQ("stations_green", start.first);
+        CHECK_EQ(15, start.second);
+        CHECK_EQ("stations_green", start.first);
+        CHECK_EQ(15, start.second);
+        CHECK_EQ(route(start, destination), 0);
+
+    }
 }
+    TEST_CASE("Этих станций на самом деле нет.")
+    {
+        CHECK_THROWS(find_stations("SHAMAN", "Я РУССКИЙ", start, destination));
+        CHECK_THROWS_WITH(find_stations("SHAMAN", "Сырец", start, destination), "Первая станция не найдена. Повторите ввод.");
+        CHECK_THROWS_WITH(find_stations("Теремки", "Я РУССКИЙ", start, destination), "Вторая станция не найдена. Повторите ввод.");
+        CHECK_NOTHROW(find_stations("Теремки", "Сырец", start, destination));
+
+    }

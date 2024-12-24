@@ -80,7 +80,6 @@ void find_stations(const std::string& first, const std::string& second, std::pai
                 found_second=true;
 			}	
 		}
-		std::cout<<"123456\n";
         for(size_t i=0; i!=stations_green.size(); i++){
 			if(stations_green[i]==first){
 				index1.second=i;
@@ -108,10 +107,10 @@ void find_stations(const std::string& first, const std::string& second, std::pai
 		}
 
     if(!found_first){
-        throw std::invalid_argument("Первая станция не найдена. Повторите ввод.");
+        throw std::invalid_argument("Первая станция не найдена. Повторите ввод: ");
     }
     if(!found_second){
-        throw std::invalid_argument("Вторая станция не найдена. Повторите ввод.");
+        throw std::invalid_argument("Вторая станция не найдена. Повторите ввод: ");
     }       
         
 }
