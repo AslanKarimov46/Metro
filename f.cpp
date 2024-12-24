@@ -100,11 +100,23 @@ void find_stations(const std::string& first, const std::string& second, std::pai
 				index2.first="stations_blue"; 
 			}	
 		}
+
+            if(index1.first=="123"){
+                throw std::invalid_argument("Введите 1ую станцию еще раз\n");
+            }        
+        
+
+    /*if(index1.first=="123"){
+        throw std::invalid_argument("Введите 1ую станцию еще раз\n");
+    }
+    if(index2.first=="456"){
+        throw std::invalid_argument("Введите 2ую станцию еще раз\n");
+    }*/
 }
 
 int route(const std::string& FirstStation, const std::string& SecondStation){
     int res_time=0;
-    std::pair<std::string, int> Coord1, Coord2;
+    std::pair<std::string, int> Coord1={"123", 5}, Coord2={"456", 9};
     find_stations(FirstStation, SecondStation, Coord1, Coord2);
 
     // Рассмотрим случаи когда мы путешествуем, только по 1ой ветке
@@ -327,6 +339,7 @@ int route(const std::string& FirstStation, const std::string& SecondStation){
                         res_time+=route(FirstStation, stations_red[9]);
                         int a=Red_to_Green+GreenLineTime[3]+Green_to_Blue+BlueLineTime[7];
                         if(a>=(RedLineTime[9]+Red_to_Blue)){
+                            a=RedLineTime[9]+Red_to_Blue;
                             std::cout<<"The next station is: "<<stations_red[10]<<" Arrival time is: "<<RedLineTime[9]<<"\n";
                             std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ НЕЗАВИСИМОСТИ\n";
                         }else{
@@ -341,6 +354,7 @@ int route(const std::string& FirstStation, const std::string& SecondStation){
                         res_time+=route(FirstStation, stations_red[9]);
                         int a=RedLineTime[9]+Red_to_Blue+BlueLineTime[7];
                         if(a>=(Red_to_Green+GreenLineTime[3]+Green_to_Blue)){
+                            a=Red_to_Green+GreenLineTime[3]+Green_to_Blue;
                             std::cout<<"Перейдите на зеленую линию на станцию ЗОЛОТЫЕ ВОРОТА\n";
                             std::cout<<"The next station is: "<<stations_green[4]<<" Arrival time is: "<<GreenLineTime[3]<<"\n";
                             std::cout<<"Перейдите на синюю линию на станцию ПЛОЩАДЬ ЛЬВА ТОЛСТОГО\n";
