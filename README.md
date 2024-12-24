@@ -32,8 +32,10 @@
 **Инструкция по запуску**
 Скачайте или клонируйте репозиторий с проектом.
 Скомпилируйте код с помощью следующей команды (в терминале):
+    
     g++ -o metro_navigator main.cpp
 Запустите скомпилированный файл:
+   
     ./metro_navigator
 Следуйте указаниям в программе: введите названия двух станций.
 
@@ -43,15 +45,15 @@
     
 Подробный маршрут со временем необходимым для достижения следующей станции
 
-The next station is: Университет Arrival time is: 8
-The next station is: Театральная Arrival time is: 9
-Перейдите на зеленую ветку на станцию ЗОЛОТЫЕ ВОРОТА
-The next station is: Дворец спорта Arrival time is: 4
-The next station is: Кловская Arrival time is: 5
-The next station is: Печерская Arrival time is: 6
-The next station is: Дружбы Народов Arrival time is: 7
-The next station is: Выдубичи Arrival time is: 8
-The next station is: Славутич Arrival time is: 9
-The next station is: Осокорки Arrival time is: 10
-The next station is: Позняки Arrival time is: 11
-И общее время необходимое на путь с учетом пересадок между линиями: 78
+    The next station is: Университет Arrival time is: 8
+    The next station is: Театральная Arrival time is: 9
+    Перейдите на зеленую ветку на станцию ЗОЛОТЫЕ ВОРОТА
+    The next station is: Дворец спорта Arrival time is: 4
+    The next station is: Кловская Arrival time is: 5
+    The next station is: Печерская Arrival time is: 6
+    The next station is: Дружбы Народов Arrival time is: 7
+    The next station is: Выдубичи Arrival time is: 8
+    The next station is: Славутич Arrival time is: 9
+    The next station is: Осокорки Arrival time is: 10
+    The next station is: Позняки Arrival time is: 11
+    И общее время необходимое на путь с учетом пересадок между линиями: 78
