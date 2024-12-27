@@ -1,4 +1,4 @@
-#include "f.h"
+#include "Metro.h"
 
 std::vector<std::string> stations_red{
     "Академгородок",
@@ -20,7 +20,7 @@ std::vector<std::string> stations_red{
     "Черниговская",
     "Лесная"};
 
-std::vector<unsigned int> RedLineTime{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
+std::vector<unsigned int> RedLineTime{3, 3, 2, 2, 3, 2, 3, 2, 2, 2, 3, 2, 3, 3, 2, 2, 2};
 	
 std::vector<std::string> stations_blue{
     "Героев Днепра",
@@ -42,7 +42,7 @@ std::vector<std::string> stations_blue{
     "Ипподром",
     "Теремки"};
 
-std::vector<unsigned int> BlueLineTime{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
+std::vector<unsigned int> BlueLineTime{2, 2, 3, 3, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 3, 4, 2};
 
 std::vector<std::string> stations_green{
     "Сырец",
@@ -62,9 +62,9 @@ std::vector<std::string> stations_green{
     "Бориспольская",
     "Красный хутор"};
 
-std::vector<unsigned int> GreenLineTime{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+std::vector<unsigned int> GreenLineTime{2, 4, 5, 2, 2, 2, 2, 3, 5, 2, 4, 4, 2, 2, 2};
 
-int Red_to_Green=1, Red_to_Blue=5, Green_to_Blue=3, Green_to_Red=5, Blue_to_Red=9, Blue_to_Green=2;
+int Red_to_Green=3, Red_to_Blue=3, Green_to_Blue=3, Green_to_Red=3, Blue_to_Red=3, Blue_to_Green=3;
 
 void find_stations(const std::string& first, const std::string& second, std::pair<std::string, int>& index1, std::pair<std::string, int>& index2){
 		bool found_first = false, found_second = false;
