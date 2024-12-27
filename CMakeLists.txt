@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(Metro)
 option(BUILD_SHARED_LIBS "Build using shared libraries " ON)
-add_library(MetroTravel f.cpp)
+add_library(MetroTravel Metro.cpp)
 target_include_directories(MetroTravel PUBLIC ${MAKE_SOURCE_DIR})
 add_executable(Metro main.cpp)
 target_link_libraries(Metro PRIVATE MetroTravel)
