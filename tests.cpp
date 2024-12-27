@@ -705,8 +705,8 @@ TEST_SUITE("One-Two")
     TEST_CASE("Этих станций на самом деле нет.")
     {
         CHECK_THROWS(find_stations("SHAMAN", "Я РУССКИЙ", start, destination));
-        CHECK_THROWS_WITH(find_stations("SHAMAN", "Сырец", start, destination), "Первая станция не найдена. Повторите ввод.");
-        CHECK_THROWS_WITH(find_stations("Теремки", "Я РУССКИЙ", start, destination), "Вторая станция не найдена. Повторите ввод.");
+        CHECK_THROWS_WITH(find_stations("SHAMAN", "Сырец", start, destination), "Первая станция не найдена. Повторите ввод: ");
+        CHECK_THROWS_WITH(find_stations("Теремки", "Я РУССКИЙ", start, destination), "Вторая станция не найдена. Повторите ввод: ");
         CHECK_NOTHROW(find_stations("Теремки", "Сырец", start, destination));
 
     }
