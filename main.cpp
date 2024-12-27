@@ -26,6 +26,7 @@ int main() {
             std::cout << exception.what();
         }
     }
-	std::cout << "Необходимое время на маршрут: " << route(startPos, endPos);
+    unsigned int timeMetro = route(startPos, endPos);
+    std::cout << "Необходимое время на маршрут: " << timeMetro << '\n';
 	return 0;
 }

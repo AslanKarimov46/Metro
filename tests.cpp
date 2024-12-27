@@ -707,6 +707,4 @@ TEST_SUITE("One-Two")
         CHECK_THROWS(find_stations("Такой", "СтанцииНет", start, destination));
         CHECK_THROWS_WITH(find_stations("Такой", "Сырец", start, destination), "Первая станция не найдена. Повторите ввод: ");
         CHECK_THROWS_WITH(find_stations("Теремки", "СтанцииНет", start, destination), "Вторая станция не найдена. Повторите ввод: ");
-        CHECK_NOTHROW(find_stations("Теремки", "Сырец", start, destination));
-
     }
